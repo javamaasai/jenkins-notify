@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Simple Transactional Email</title>
+    <style media="all" type="text/css">
+      @media only screen and (max-width: 620px) {
+        table[class="body"] h1,
+        table[class="body"] h2,
+        table[class="body"] h3,
+        table[class="body"] h4 {
+          font-weight: 600 !important;
+        }
+        table[class="body"] h1 {
+          font-size: 22px !important;
+        }
+        table[class="body"] h2 {
+          font-size: 18px !important;
+        }
+        table[class="body"] h3 {
+          font-size: 16px !important;
+        }
+        table[class="body"] .content,
+        table[class="body"] .wrapper {
+          padding: 10px !important;
+        }
+        table[class="body"] .container {
+          padding: 0 !important;
+          width: 100% !important;
+        }
+        table[class="body"] .btn table,
+        table[class="body"] .btn a {
+          width: 100% !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    style="
+      font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+      height: 100% !important;
+      line-height: 1.6em;
+      margin: 0;
+      padding: 0;
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+      width: 100% !important;
+      background-color: #fef2f2;
+    "
+  >
+    <table
+      class="body"
+      style="
+        box-sizing: border-box;
+        border-collapse: separate !important;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+        width: 100%;
+        background-color: #fef2f2;
+      "
+      width="100%"
+      bgcolor="#fef2f2"
+    >
+      <tr>
+        <td
+          style="
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande',
+              sans-serif;
+            font-size: 14px;
+            vertical-align: top;
+          "
+          valign="top"
+        ></td>
+        <td
+          class="container"
+          style="
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande',
+              sans-serif;
+            font-size: 14px;
+            vertical-align: top;
+            display: block;
+            margin: 0 auto !important;
+            max-width: 580px;
+            padding: 10px;
+            width: 580px;
+          "
+          width="580"
+          valign="top"
+        >
+          <div
+            class="content"
+            style="
+              box-sizing: border-box;
+              display: block;
+              margin: 0 auto;
+              max-width: 580px;
+              padding: 10px;
+            "
+          >
+            <table
+              class="main"
+              style="
+                box-sizing: border-box;
+                border-collapse: separate !important;
+                mso-table-lspace: 0pt;
+                mso-table-rspace: 0pt;
+                width: 100%;
+                background: #ffffff;
+                border: 1px solid red;
+                border-radius: 10px;
+                border-spacing: 0;
+              "
+              width="100%"
+            >
+              <tr>
+                <td
+                  class="wrapper"
+                  colspan="2"
+                  style="
+                    box-sizing: border-box;
+                    font-family: 'Helvetica Neue', Helvetica, Arial,
+                      'Lucida Grande', sans-serif;
+                    font-size: 14px;
+                    vertical-align: top;
+                    padding: 30px;
+                  "
+                  valign="top"
+                >
+                  <table
+                    style="
+                      box-sizing: border-box;
+                      border-collapse: separate !important;
+                      mso-table-lspace: 0pt;
+                      mso-table-rspace: 0pt;
+                      width: 100%;
+                    "
+                    width="100%"
+                  >
+                    <tr>
+                      <td
+                        style="
+                          box-sizing: border-box;
+                          font-family: 'Helvetica Neue', Helvetica, Arial,
+                            'Lucida Grande', sans-serif;
+                          font-size: 14px;
+                          vertical-align: top;
+                        "
+                        valign="top"
+                      >
+                        <h1
+                          class="align-left"
+                          style="
+                            color: #111111 !important;
+                            font-family: 'Helvetica Neue', Helvetica, Arial,
+                              'Lucida Grande', sans-serif;
+                            font-weight: 300;
+                            line-height: 1.4em;
+                            margin: 0;
+                            margin-bottom: 30px;
+                            font-size: 38px;
+                            text-transform: capitalize;
+                            text-align: left;
+                          "
+                        >
+                          Build <span style="color: #19c106">Succeded</span>
+                        </h1>
+                        <p
+                          style="
+                            font-family: 'Helvetica Neue', Helvetica, Arial,
+                              'Lucida Grande', sans-serif;
+                            font-size: 14px;
+                            font-weight: normal;
+                            margin: 0;
+                            margin-bottom: 15px;
+                          "
+                        >
+                          Hi there,
+                        </p>
+                        <p
+                          style="
+                            font-family: 'Helvetica Neue', Helvetica, Arial,
+                              'Lucida Grande', sans-serif;
+                            font-size: 14px;
+                            font-weight: normal;
+                            margin: 0;
+                            margin-bottom: 15px;
+                          "
+                        >
+                        Build job : <b>${env.JOB_NAME}</b>, No. <b>[#${env.BUILD_NUMBER}]</b> was successfully ran by : <b>${env.BUILD_USER}</b>
+                        </p>
+                        <p
+                          style="
+                            font-family: 'Helvetica Neue', Helvetica, Arial,
+                              'Lucida Grande', sans-serif;
+                            font-size: 14px;
+                            font-weight: normal;
+                            margin: 0;
+                            margin-bottom: 15px;
+                          "
+                        >
+                        For more information please view the job on jenkins by clicking the button below.
+                        </p>
+                        <table
+                          class="btn btn-primary"
+                          cellpadding="0"
+                          cellspacing="0"
+                          style="
+                            box-sizing: border-box;
+                            border-collapse: separate !important;
+                            mso-table-lspace: 0pt;
+                            mso-table-rspace: 0pt;
+                            width: 100%;
+                          "
+                          width="100%"
+                        >
+                          <tr>
+                            <td
+                              align="center"
+                              style="
+                                box-sizing: border-box;
+                                font-family: 'Helvetica Neue', Helvetica, Arial,
+                                  'Lucida Grande', sans-serif;
+                                font-size: 14px;
+                                vertical-align: top;
+                                padding-bottom: 15px;
+                              "
+                              valign="top"
+                            >
+                              <table
+                                cellpadding="0"
+                                cellspacing="0"
+                                style="
+                                  box-sizing: border-box;
+                                  border-collapse: separate !important;
+                                  mso-table-lspace: 0pt;
+                                  mso-table-rspace: 0pt;
+                                  width: auto;
+                                "
+                              >
+                                <tr>
+                                  <td
+                                    style="
+                                      box-sizing: border-box;
+                                      font-family: 'Helvetica Neue', Helvetica,
+                                        Arial, 'Lucida Grande', sans-serif;
+                                      font-size: 14px;
+                                      vertical-align: top;
+                                      background-color: #189b28;
+                                      border-radius: 5px;
+                                      text-align: center;
+                                    "
+                                    valign="top"
+                                    bgcolor="#189b28"
+                                    align="center"
+                                  >
+                                    <a
+                                      href="${env.BUILD_URL}"
+                                      style="
+                                        box-sizing: border-box;
+                                        color: #ffffff;
+                                        text-decoration: none;
+                                        background-color: #189b28;
+                                        border: solid 1px #189b28;
+                                        border-radius: 5px;
+                                        cursor: pointer;
+                                        display: inline-block;
+                                        font-size: 14px;
+                                        font-weight: bold;
+                                        margin: 0;
+                                        padding: 12px 25px;
+                                        text-transform: capitalize;
+                                        border-color: #189b28;
+                                      "
+                                      >View the Build Job</a
+                                    >
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <p
+                          style="
+                            font-family: 'Helvetica Neue', Helvetica, Arial,
+                              'Lucida Grande', sans-serif;
+                            font-size: 14px;
+                            font-weight: normal;
+                            margin: 0;
+                            margin-bottom: 15px;
+                          "
+                        >
+                          Keep building and innovation your way into the world!
+                        </p>
+                        <p
+                          style="
+                            font-family: 'Helvetica Neue', Helvetica, Arial,
+                              'Lucida Grande', sans-serif;
+                            font-size: 14px;
+                            font-weight: normal;
+                            margin: 0;
+                            margin-bottom: 15px;
+                          "
+                        >
+                          Thanks, have a lovely day.
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr class="tr-footer">
+                <td
+                  width="70px;"
+                  style="
+                    box-sizing: border-box;
+                    font-family: 'Helvetica Neue', Helvetica, Arial,
+                      'Lucida Grande', sans-serif;
+                    font-size: 14px;
+                    vertical-align: top;
+                  "
+                  valign="top"
+                >
+                  <img
+                    src="https://thumbs2.imgbox.com/8a/3d/eZOljBHU_t.png"
+                    style="
+                      -ms-interpolation-mode: bicubic;
+                      max-width: 100%;
+                      height: 70px;
+                    "
+                    alt="buildlogo"
+                  />
+                </td>
+                <td
+                  class="align-center-footer"
+                  style="
+                    box-sizing: border-box;
+                    font-family: 'Helvetica Neue', Helvetica, Arial,
+                      'Lucida Grande', sans-serif;
+                    font-size: 14px;
+                    vertical-align: middle;
+                    background-color: red;
+                    text-align: center;
+                    color: #ffffff !important;
+                    border-radius: 0 0 10px 0;
+                  "
+                  valign="middle"
+                  bgcolor="red"
+                  align="center"
+                >
+                  <h3
+                    style="
+                      font-size: 18px;
+                      color: #ffff !important;
+                      font-family: 'Helvetica Neue', Helvetica, Arial,
+                        'Lucida Grande', sans-serif;
+                      font-weight: 400;
+                      line-height: 1.4em;
+                      margin: 0;
+                      margin-bottom: 0 !important;
+                    "
+                  >
+                    The best place to for digital insurance
+                  </h3>
+                </td>
+              </tr>
+            </table>
+            <div
+              class="footer"
+              style="box-sizing: border-box; clear: both; width: 100%"
+            >
+              <table
+                style="
+                  box-sizing: border-box;
+                  border-collapse: separate !important;
+                  mso-table-lspace: 0pt;
+                  mso-table-rspace: 0pt;
+                  width: 100%;
+                  color: #999999;
+                  font-size: 12px;
+                "
+                width="100%"
+              >
+                <tr style="color: #999999; font-size: 12px">
+                  <td
+                    class="align-center"
+                    style="
+                      box-sizing: border-box;
+                      font-family: 'Helvetica Neue', Helvetica, Arial,
+                        'Lucida Grande', sans-serif;
+                      vertical-align: top;
+                      font-size: 12px;
+                      color: #999999;
+                      text-align: center;
+                      padding: 20px 0;
+                    "
+                    valign="top"
+                    align="center"
+                  >
+                    <p
+                      style="
+                        font-family: 'Helvetica Neue', Helvetica, Arial,
+                          'Lucida Grande', sans-serif;
+                        font-weight: normal;
+                        margin: 0;
+                        margin-bottom: 15px;
+                        font-size: 12px;
+                        color: #ff0800;
+                      "
+                    >
+                      Built by Agencify With love &#10084;&#65039;
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </td>
+        <td
+          style="
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande',
+              sans-serif;
+            font-size: 14px;
+            vertical-align: top;
+          "
+          valign="top"
+        ></td>
+      </tr>
+    </table>
+  </body>
+</html>
