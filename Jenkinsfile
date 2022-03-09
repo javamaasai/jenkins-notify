@@ -21,14 +21,14 @@ pipeline {
     post {
         success {
             script {
-                cur_build_status = 'successfully'
+                cur_build_status = '''<span style="color: #19c106">successfully</span>'''
                 select_build_status = '''<span style="color: #19c106">Succeded</span>'''
                 cur_build_status_color = '#189b28'
             }
         }
         failure {
             script {
-                cur_build_status = 'unsuccessfully'
+                cur_build_status = '''<span style="color: red">unsuccessfully</span>'''
                 select_build_status = '''<span style="color: red">Failed</span>'''
                 cur_build_status_color = 'red'
             }
