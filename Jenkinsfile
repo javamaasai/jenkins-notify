@@ -3,21 +3,20 @@ def cur_build_status
 
 pipeline {
     agent any
-
-    stage('Error') {
-      steps {
-        echo "Failure"
-        error "failure test. It’s work"
-      }
-    }
      
-    // stages {
-    //     stage('Ok') {
-    //         steps {
-    //             echo "Ok"
-    //         }
-    //     }
-    // }
+    stages {
+        stage('Error') {
+            steps {
+                echo "Failure"
+                error "failure test. It’s work"
+            }
+        }
+        // stage('Ok') {
+        //     steps {
+        //         echo "Ok"
+        //     }
+        // }
+    }
     post {
         success {
             script {
