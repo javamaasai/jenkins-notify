@@ -1,33 +1,36 @@
 def select_build_status
 def cur_build_status
+def cur_build_status_color
 
 pipeline {
     agent any
      
     stages {
-        stage('Error') {
-            steps {
-                echo "Failure"
-                error "failure test. It’s work"
-            }
-        }
-        // stage('Ok') {
+        // stage('Error') {
         //     steps {
-        //         echo "Ok"
+        //         echo "Failure"
+        //         error "failure test. It’s work"
         //     }
         // }
+        stage('Ok') {
+            steps {
+                echo "Ok"
+            }
+        }
     }
     post {
         success {
             script {
                 cur_build_status = 'successfully'
                 select_build_status = '''<span style="color: #19c106">Succeded</span>'''
+                cur_build_status_color = '#189b28'
             }
         }
         failure {
             script {
                 cur_build_status = 'unsuccessfully'
                 select_build_status = '''<span style="color: red">Failed</span>'''
+                cur_build_status_color = 'red'
             }
         }
         
@@ -231,7 +234,7 @@ pipeline {
                             margin-bottom: 15px;
                           "
                         >
-                        Build job : <b>${env.JOB_NAME}</b>, No. <b>[#${env.BUILD_NUMBER}]</b> was ${cur_build_status} ran by : <b>${env.BUILD_USER}</b>"
+                        Build job : <b>${env.JOB_NAME}</b>, No. <b>[#${env.BUILD_NUMBER}]</b> was ${cur_build_status} ran by : <b>${env.BUILD_USER}</b>
                         </p>
                         <p
                           style="
@@ -290,12 +293,12 @@ pipeline {
                                         Arial, 'Lucida Grande', sans-serif;
                                       font-size: 14px;
                                       vertical-align: top;
-                                      background-color: #189b28;
+                                      background-color: ${cur_build_status_color};
                                       border-radius: 5px;
                                       text-align: center;
                                     "
                                     valign="top"
-                                    bgcolor="#189b28"
+                                    bgcolor="${cur_build_status_color}"
                                     align="center"
                                   >
                                     <a
@@ -304,8 +307,8 @@ pipeline {
                                         box-sizing: border-box;
                                         color: #ffffff;
                                         text-decoration: none;
-                                        background-color: #189b28;
-                                        border: solid 1px #189b28;
+                                        background-color: ${cur_build_status_color};
+                                        border: solid 1px ${cur_build_status_color};
                                         border-radius: 5px;
                                         cursor: pointer;
                                         display: inline-block;
@@ -314,7 +317,7 @@ pipeline {
                                         margin: 0;
                                         padding: 12px 25px;
                                         text-transform: capitalize;
-                                        border-color: #189b28;
+                                        border-color: ${cur_build_status_color};
                                       "
                                       >View the Build Job</a
                                     >
