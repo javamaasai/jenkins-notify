@@ -231,7 +231,7 @@ pipeline {
                             margin-bottom: 15px;
                           "
                         >
-                        Build job : <b>${env.JOB_NAME}</b>, No. <b>[#${env.BUILD_NUMBER}]</b> was successfully ran by : <b>${env.BUILD_USER}</b>"
+                        Build job : <b>${env.JOB_NAME}</b>, No. <b>[#${env.BUILD_NUMBER}]</b> was ${cur_build_status} ran by : <b>${env.BUILD_USER}</b>"
                         </p>
                         <p
                           style="
