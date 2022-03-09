@@ -1,6 +1,6 @@
 def success_build_status = '''<span style="color: #19c106">Succeded</span'''
 def engine = new groovy.text.SimpleTemplateEngine()
-def template = engine.createTemplate(text).make(binding)
+def templatex = engine.createTemplate(text).make(binding)
 
 pipeline {
     agent any
@@ -19,7 +19,7 @@ pipeline {
             emailext mimeType: 'text/html',
             subject: "Build [#${env.BUILD_NUMBER}] Info",
             to: 'isaac.khaguli@turnkeyafrica.com',
-            body: template.toString()
+            body: templatex.toString()
         }
     }
 }
