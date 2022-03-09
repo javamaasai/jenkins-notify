@@ -1,4 +1,5 @@
 def select_build_status = ''
+def cur_build_status = ''
 
 pipeline {
     agent any
@@ -13,12 +14,12 @@ pipeline {
     post {
         wrap([$class: 'BuildUser']) {
         success {
-            cur_build_status = 'successfully'
-            select_build_status = '''<span style="color: #19c106">Succeded</span>'''
+            ${cur_build_status} = 'successfully'
+            ${select_build_status} = '''<span style="color: #19c106">Succeded</span>'''
         }
         failure {
-            cur_build_status = 'unsuccessfully'
-            select_build_status = '''<span style="color: red">Failed</span>'''
+            ${cur_build_status} = 'unsuccessfully'
+            ${select_build_status} = '''<span style="color: red">Failed</span>'''
         }
         
         always {
