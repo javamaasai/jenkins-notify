@@ -1,3 +1,4 @@
+"""
 <!DOCTYPE html>
 <html>
   <head>
@@ -168,7 +169,7 @@
                             text-align: left;
                           "
                         >
-                          Build <span style="color: #19c106">Succeded</span>
+                          Build $build_status
                         </h1>
                         <p
                           style="
@@ -192,7 +193,7 @@
                             margin-bottom: 15px;
                           "
                         >
-                        Build job : <b>'''+"${env.JOB_NAME}"+ "</b>, No. <b>[#"+"${env.BUILD_NUMBER}"+"]</b> was successfully ran by : <b>"+"${env.BUILD_USER}"+"</b>"+'''
+                        Build job : <b>${env.JOB_NAME}</b>, No. <b>[#${env.BUILD_NUMBER}]</b> was successfully ran by : <b>${env.BUILD_USER}</b>
                         </p>
                         <p
                           style="
@@ -434,4 +435,5 @@
       </tr>
     </table>
   </body>
-</html> 
+</html>
+"""
