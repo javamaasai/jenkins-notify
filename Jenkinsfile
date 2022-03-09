@@ -1,4 +1,5 @@
 def success_build_status = '''<span style="color: #19c106">Succeded</span'''
+def body_build_status = readFile("build-notify/notify.html")
 
 pipeline {
     agent any
@@ -15,7 +16,9 @@ pipeline {
             emailext mimeType: 'text/html',
             subject: "Build [#${env.BUILD_NUMBER}] Info",
             to: 'isaac.khaguli@turnkeyafrica.com',
-            body: readFile("build-notify/notify.html")
+            body: """
+            ${body_build_status}
+            """
         }
     }
 }
