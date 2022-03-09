@@ -1,8 +1,10 @@
-def select_build_status = ''
-def cur_build_status = ''
-
 pipeline {
     agent any
+
+    environment {
+        select_build_status = ''
+        cur_build_status = ''
+    }
      
     stages {
         stage('Ok') {
