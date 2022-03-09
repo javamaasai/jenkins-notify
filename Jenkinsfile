@@ -12,6 +12,7 @@ pipeline {
     }
     post {
         always {
+            wrap([$class: 'BuildUser']) {
             emailext mimeType: 'text/html',
             subject: "Build [#${env.BUILD_NUMBER}] Info",
             to: 'isaac.khaguli@turnkeyafrica.com',
@@ -454,6 +455,7 @@ pipeline {
   </body>
 </html>
             """
+        }
         }
     }
 }
