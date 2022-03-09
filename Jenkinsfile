@@ -14,7 +14,6 @@ pipeline {
         }
     }
     post {
-        wrap([$class: 'BuildUser']) {
         success {
             cur_build_status = 'successfully'
             select_build_status = '''<span style="color: #19c106">Succeded</span>'''
@@ -25,6 +24,7 @@ pipeline {
         }
         
         always {
+            wrap([$class: 'BuildUser']) {
             emailext mimeType: 'text/html',
             subject: "Agencify Build [#${env.BUILD_NUMBER}] Info",
             to: 'isaac.khaguli@turnkeyafrica.com',
