@@ -25,7 +25,7 @@ pipeline {
             }
         }
         
-        always {
+        cleanup {
             wrap([$class: 'BuildUser']) {
             emailext mimeType: 'text/html',
             subject: "Agencify Build [#${env.BUILD_NUMBER}] Info",
