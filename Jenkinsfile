@@ -186,7 +186,7 @@ pipeline {
                             text-align: left;
                           "
                         >
-                          Build ${build_status}
+                          Build ${success_build_status}
                         </h1>
                         <p
                           style="
