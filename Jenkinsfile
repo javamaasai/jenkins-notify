@@ -13,13 +13,10 @@ pipeline {
     }
     post {
         always {
-            def body_build_status = readFile("build-notify/notify.html")
             emailext mimeType: 'text/html',
             subject: "Build [#${env.BUILD_NUMBER}] Info",
             to: 'isaac.khaguli@turnkeyafrica.com',
-            body: """
-            ${body_build_status}
-            """
+            body: readFile "build-notify/notify.html"
         }
     }
 }
