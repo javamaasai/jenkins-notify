@@ -1,4 +1,4 @@
-def success_build_status = '''<span style="color: #19c106">Succeded</span'''
+def build_status = '''<span style="color: #19c106">Succeded</span'''
 
 pipeline {
     agent any
