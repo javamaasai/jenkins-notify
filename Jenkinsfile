@@ -6,17 +6,17 @@ pipeline {
     agent any
      
     stages {
-        // stage('Error') {
-        //     steps {
-        //         echo "Failure"
-        //         error "failure test. It’s work"
-        //     }
-        // }
-        stage('Ok') {
+        stage('Error') {
             steps {
-                echo "Ok"
+                echo "Failure"
+                error "failure test. It’s work"
             }
         }
+        // stage('Ok') {
+        //     steps {
+        //         echo "Ok"
+        //     }
+        // }
     }
     post {
         success {
