@@ -1,4 +1,4 @@
-def success_build_status = '''<span style="color: #19c106">Succeded</span>'''
+def select_build_status = ''
 
 pipeline {
     agent any
@@ -11,10 +11,19 @@ pipeline {
         }
     }
     post {
+        wrap([$class: 'BuildUser']) {
+        success {
+            cur_build_status = 'successfully'
+            select_build_status = '''<span style="color: #19c106">Succeded</span>'''
+        }
+        failure {
+            cur_build_status = 'unsuccessfully'
+            select_build_status = '''<span style="color: red">Failed</span>'''
+        }
+        
         always {
-            build_status = '>'
             emailext mimeType: 'text/html',
-            subject: "Build [#${env.BUILD_NUMBER}] Info",
+            subject: "Agencify Build [#${env.BUILD_NUMBER}] Info",
             to: 'isaac.khaguli@turnkeyafrica.com',
             body: """
 <!DOCTYPE html>
@@ -187,7 +196,7 @@ pipeline {
                             text-align: left;
                           "
                         >
-                          Build ${success_build_status}
+                          Build ${select_build_status}
                         </h1>
                         <p
                           style="
@@ -211,7 +220,7 @@ pipeline {
                             margin-bottom: 15px;
                           "
                         >
-                        Build job : <b>${env.JOB_NAME}</b>, No. <b>[#${env.BUILD_NUMBER}]</b> was successfully ran by : <b>${env.BUILD_USER}</b>
+                        Build job : <b>${env.JOB_NAME}</b>, No. <b>[#${env.BUILD_NUMBER}]</b> was successfully ran by : <b>${env.BUILD_USER}</b>"
                         </p>
                         <p
                           style="
@@ -455,6 +464,7 @@ pipeline {
   </body>
 </html>
 """
+        }
         }
     }
 }
